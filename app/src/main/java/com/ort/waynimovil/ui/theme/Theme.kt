@@ -40,7 +40,7 @@ private val LightColorScheme = lightColorScheme(
     error = Red900,
     surface = White,
     onSurface = Gray900,
-    outline = Gray500,
+    outline = Gray500
 )
 
 @Composable
@@ -49,12 +49,6 @@ fun WaynimovilTheme(
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-//        //No creo que usemos esto, pero lo dejo por si acaso, solo prestar atencion abajo
-//        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-//            val context = LocalContext.current
-//            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-//        }
-
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
