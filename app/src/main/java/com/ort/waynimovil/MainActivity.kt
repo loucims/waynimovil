@@ -17,6 +17,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.ort.waynimovil.navigation.AppNavigation
 import com.ort.waynimovil.ui.theme.WaynimovilTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,14 +28,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             WaynimovilTheme {
-                val viewModel: MainActivityViewModel = hiltViewModel()
-
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    TestingComponent(
-                        modifier = Modifier.padding(innerPadding),
-                        viewModel = viewModel
-                    )
-                }
+                AppNavigation()
+//                val viewModel: MainActivityViewModel = hiltViewModel()
+//
+//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    TestingComponent(
+//                        modifier = Modifier.padding(innerPadding),
+//                        viewModel = viewModel
+//                    )
+//                }
             }
         }
     }
