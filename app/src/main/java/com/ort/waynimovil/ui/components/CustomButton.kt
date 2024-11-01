@@ -27,7 +27,6 @@ fun CustomButton(text: String, onClick: () -> Unit) {
         modifier = Modifier
             .width(336.dp)
             .height(48.dp)
-            .padding(horizontal = 16.dp)
     ) {
         Text(
             text = text,

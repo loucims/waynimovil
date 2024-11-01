@@ -1,10 +1,16 @@
 package com.ort.waynimovil.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
+import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -19,16 +25,16 @@ import com.ort.waynimovil.ui.theme.WaynimovilTheme
 fun CardOption(title: String, description: String? = null, onClick: () -> Unit) {
     Row(
         modifier = Modifier
+            .border(width = 1.dp, MaterialTheme.colorScheme.outline)
             .fillMaxWidth()
-            .padding(vertical = 8.dp)
-            .clickable { onClick() }
-            .background(MaterialTheme.colorScheme.surface),
+            .background(MaterialTheme.colorScheme.surface)
+            .padding(12.5.dp, 16.dp)
+            .clickable { onClick() },
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(
             modifier = Modifier
                 .weight(1f)
-                .padding(start = 16.dp)
         ) {
             Text(
                 text = title,
@@ -43,15 +49,21 @@ fun CardOption(title: String, description: String? = null, onClick: () -> Unit) 
                 )
             }
         }
-        Icon(
-            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-            contentDescription = "Ir",
-            tint = MaterialTheme.colorScheme.primary,
+        Box(
             modifier = Modifier
-                .padding(1.dp)
-                .width(24.dp)
-                .height(24.dp)
-        )
+                .padding(4.dp)
+                .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(50))
+        ) {
+            Icon(
+                imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowRight,
+                contentDescription = "Ir",
+                tint = MaterialTheme.colorScheme.onPrimary,
+                modifier = Modifier
+                    .padding(1.dp)
+                    .width(24.dp)
+                    .height(24.dp)
+            )
+        }
     }
 }
 
@@ -61,7 +73,7 @@ fun TextBar(){
     WaynimovilTheme{
         CardOption(
             title = "Prueba TextBar",
-            description = "Probamos si funca",
+            description = null,
             onClick = { print("funca")}
         )
     }
