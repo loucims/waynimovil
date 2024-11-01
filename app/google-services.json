@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "599835975950",
+    "project_id": "waynimovil-c18a4",
+    "storage_bucket": "waynimovil-c18a4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599835975950:android:a9217527f25909b502775f",
+        "android_client_info": {
+          "package_name": "com.ort.waynimovil"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVfJSzbOwCFWlE-vqlXdjNhZQo-Ap_GuU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
