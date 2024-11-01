@@ -6,11 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowForward
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
-import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,7 +21,7 @@ import com.ort.waynimovil.ui.theme.WaynimovilTheme
 fun CardOption(title: String, description: String? = null, onClick: () -> Unit) {
     Row(
         modifier = Modifier
-            .border(width = 1.dp, MaterialTheme.colorScheme.outline)
+            .border(width = 0.5.dp, MaterialTheme.colorScheme.outline)
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.surface)
             .padding(12.5.dp, 16.dp)
