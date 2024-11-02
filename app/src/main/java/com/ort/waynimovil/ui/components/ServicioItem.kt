@@ -27,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
@@ -52,6 +53,7 @@ fun ServicioItem(iconPainter: Painter, title: String, onClick: () -> Unit) {
             .width(160.dp)
             .height(138.dp)
             .scale(scale.value)
+            .clip(RoundedCornerShape(size = 8.dp))
             .clickable{
                 coroutineScope.launch {
                     scale.animateTo(0.9f, animationSpec = tween(durationMillis = 100, easing = EaseInOut))
