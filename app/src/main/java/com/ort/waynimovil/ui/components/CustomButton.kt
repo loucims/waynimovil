@@ -1,5 +1,6 @@
 package com.ort.waynimovil.ui.components
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -25,7 +26,7 @@ fun CustomButton(text: String, onClick: () -> Unit) {
         ),
         shape = RoundedCornerShape(50),
         modifier = Modifier
-            .width(336.dp)
+            .fillMaxWidth()
             .height(48.dp)
     ) {
         Text(
