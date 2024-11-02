@@ -56,6 +56,7 @@ fun WaynimovilTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
+        shapes = CustomShapes,
         content = content
     )
 }
