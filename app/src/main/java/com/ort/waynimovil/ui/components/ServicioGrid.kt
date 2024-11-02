@@ -2,6 +2,8 @@ package com.ort.waynimovil.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -19,33 +21,18 @@ import androidx.compose.ui.unit.dp
 import com.ort.waynimovil.R
 import com.ort.waynimovil.ui.theme.WaynimovilTheme
 
-data class ServicioItemData(
-    val iconRes: Int,
-    val title: String,
-    val onClick: () -> Unit
-)
-
 @Composable
-fun ServicioGrid(columnsQuantity: Int, items: List<ServicioItemData>) {
-    val shape = RoundedCornerShape(size = 8.dp)
-
-
+fun ServicioGrid(items: List<ServicioItemData>, verticalSpacing: Int, horizontalSpacing: Int) {
     LazyVerticalGrid(
         modifier = Modifier
-            .shadow(
-                elevation = 6.dp,
-                spotColor = Color(0x26000000),
-                ambientColor = Color(0x26000000)
-            )
-            .border(width = 1.dp, color = MaterialTheme.colorScheme.outline, shape = shape)
-            .clip(shape = shape)
             .fillMaxWidth()
-            .background(color = MaterialTheme.colorScheme.surface)
-        ,
-        columns = GridCells.Fixed(columnsQuantity)
+            .fillMaxHeight(),
+        columns = GridCells.Fixed(2),
+        verticalArrangement = Arrangement.spacedBy(verticalSpacing.dp),
+        horizontalArrangement = Arrangement.spacedBy(horizontalSpacing.dp)
     ) {
         items(items) { item ->
-            ServicioItemMinimized(
+            ServicioItem(
                 iconPainter = painterResource(id = item.iconRes),
                 title = item.title,
                 onClick = item.onClick
@@ -58,35 +45,13 @@ fun ServicioGrid(columnsQuantity: Int, items: List<ServicioItemData>) {
 @Composable
 fun ServicioGridPreview() {
     val items = listOf(
-        ServicioItemData(R.drawable.icono_colectivo, "CARGAR \nSUBE", {}),
-        ServicioItemData(R.drawable.icono_colectivo, "CARGAR \nSUBE", {}),
-        ServicioItemData(R.drawable.icono_colectivo, "CARGAR \nSUBE", {})
+        ServicioItemData(R.drawable.icono_colectivo, "CARGAR SUBE", {}),
+        ServicioItemData(R.drawable.icono_colectivo, "CARGAR SUBE", {}),
+        ServicioItemData(R.drawable.icono_colectivo, "CARGAR SUBE", {}),
+        ServicioItemData(R.drawable.icono_colectivo, "CARGAR SUBE", {}),
     )
 
     WaynimovilTheme {
-        ServicioGrid(
-            columnsQuantity = 3,
-            items = items
-        )
-    }
-}
-
-@Preview
-@Composable
-fun ServicioGrid2Preview() {
-    val items = listOf(
-        ServicioItemData(R.drawable.icono_colectivo, "CARGAR \nSUBE", {}),
-        ServicioItemData(R.drawable.icono_colectivo, "CARGAR \nSUBE", {}),
-        ServicioItemData(R.drawable.icono_colectivo, "CARGAR \nSUBE", {}),
-        ServicioItemData(R.drawable.icono_colectivo, "CARGAR \nSUBE", {}),
-        ServicioItemData(R.drawable.icono_colectivo, "CARGAR \nSUBE", {}),
-        ServicioItemData(R.drawable.icono_colectivo, "CARGAR \nSUBE", {})
-    )
-
-    WaynimovilTheme {
-        ServicioGrid(
-            columnsQuantity = 3,
-            items = items
-        )
+        ServicioGrid(items = items, verticalSpacing = 16, horizontalSpacing = 16)
     }
 }

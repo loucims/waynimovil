@@ -53,9 +53,9 @@ fun ServicioItem(iconPainter: Painter, title: String, onClick: () -> Unit) {
     ) {
         Box(
             modifier = Modifier
-                .size(70.dp)
+                .size(68.dp)
                 .border(
-                    width = 2.dp,
+                    width = 4.dp,
                     color = MaterialTheme.colorScheme.primaryContainer,
                     shape = RoundedCornerShape(size = 50.dp)
                 ),
@@ -73,7 +73,7 @@ fun ServicioItem(iconPainter: Painter, title: String, onClick: () -> Unit) {
         Text(
             textAlign = TextAlign.Center,
             text = title,
-            style = MaterialTheme.typography.bodyLarge,
+            style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onBackground,
             modifier = Modifier.fillMaxWidth(),
             maxLines = 1,

@@ -21,7 +21,7 @@ import com.ort.waynimovil.ui.theme.WaynimovilTheme
 fun CardOption(title: String, description: String? = null, onClick: () -> Unit) {
     Row(
         modifier = Modifier
-            .border(width = 1.dp, MaterialTheme.colorScheme.outline)
+            .border(width = 0.5.dp, MaterialTheme.colorScheme.outline)
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.surface)
             .padding(12.5.dp, 16.dp)
@@ -65,7 +65,7 @@ fun CardOption(title: String, description: String? = null, onClick: () -> Unit) 
 
 @Preview
 @Composable
-fun TextBarPreview(){
+fun CardOptionPreview(){
     WaynimovilTheme{
         CardOption(
             title = "Prueba TextBar",
