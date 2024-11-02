@@ -1,6 +1,7 @@
 package com.ort.waynimovil.ui.components
 
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.EaseInOut
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -50,8 +51,8 @@ fun ShowDataButton(isActive: Boolean, onClick: () -> Unit) {
                 )
             ) {
                 coroutineScope.launch {
-                    scale.snapTo(0.9f)
-                    scale.animateTo(1f, animationSpec = tween(100))
+                    scale.animateTo(0.9f, animationSpec = tween(durationMillis = 100, easing = EaseInOut))
+                    scale.animateTo(1f, animationSpec = tween(durationMillis = 200, easing = EaseInOut))
                 }
                 onClick()
             }
