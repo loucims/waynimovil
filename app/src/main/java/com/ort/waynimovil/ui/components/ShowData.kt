@@ -45,7 +45,7 @@ fun ShowDataButton(onClick: () -> Unit) {
 
 @Preview
 @Composable
-fun ShowData(){
+fun ShowDataPreview(){
     WaynimovilTheme{
         ShowDataButton(
             onClick = { print("funca")}
