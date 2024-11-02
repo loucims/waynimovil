@@ -2,6 +2,7 @@ package com.ort.waynimovil.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -33,6 +34,7 @@ fun ServicioItemMinimized(iconPainter: Painter, title: String, onClick: () -> Un
             .padding(1.dp)
             .width(112.dp)
             .height(96.dp)
+            .clickable { onClick() }
             .background(color = MaterialTheme.colorScheme.surface)
     ) {
         Icon(
@@ -46,7 +48,7 @@ fun ServicioItemMinimized(iconPainter: Painter, title: String, onClick: () -> Un
         Text(
             textAlign = TextAlign.Center,
             text = title,
-            style = MaterialTheme.typography.bodyLarge,
+            style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onBackground,
             maxLines = 2
         )

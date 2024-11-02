@@ -2,6 +2,7 @@ package com.ort.waynimovil.ui.components
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.Icon
@@ -44,7 +45,9 @@ fun BottomNavigationBar(navController: NavController, drawerState: DrawerState, 
     val currentRoute = navBackStackEntry?.destination?.route
     val primaryColor = MaterialTheme.colorScheme.primary
 
-    NavigationBar {
+    NavigationBar(
+        modifier = Modifier.background(MaterialTheme.colorScheme.surface),
+    ) {
         items.forEachIndexed { index, item ->
             val isSelected = if (isDrawerOpen || isDrawerStateChanging) {
                 index == items.lastIndex
