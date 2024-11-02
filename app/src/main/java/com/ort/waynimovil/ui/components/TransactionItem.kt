@@ -1,5 +1,6 @@
 package com.ort.waynimovil.ui.components
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -24,6 +25,7 @@ fun TransactionItem(date: String, description: String, aut: String = "Aut. 39499
 
     Surface (
         modifier = Modifier
+            .border(width = 0.5.dp, MaterialTheme.colorScheme.outline)
             .fillMaxWidth(),
         color = MaterialTheme.colorScheme.surface
     ){
