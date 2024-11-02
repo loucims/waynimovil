@@ -21,7 +21,7 @@ import com.ort.waynimovil.ui.theme.WaynimovilTheme
 
 
 @Composable
-fun LoanReminderCard(onActionClick: () -> Unit) {
+fun LoanExpiringCard(onActionClick: () -> Unit) {
     Surface(
         modifier = Modifier
             .shadow(
@@ -70,7 +70,7 @@ fun LoanReminderCard(onActionClick: () -> Unit) {
 @Composable
 fun LoanExpiringPreview(){
     WaynimovilTheme{
-        LoanReminderCard(
+        LoanExpiringCard(
             onActionClick = { print("funca")}
         )
     }
