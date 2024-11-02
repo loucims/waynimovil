@@ -3,6 +3,8 @@ package com.ort.waynimovil.ui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -26,9 +28,11 @@ data class ServicioItemData(
 )
 
 @Composable
-fun ServicioGridMinimized(columnsQuantity: Int, items: List<ServicioItemData>) {
+fun ServicioGridMinimized(items: List<ServicioItemData>) {
     val shape = RoundedCornerShape(size = 8.dp)
 
+    val rowHeight = 96.dp
+    val numberOfRows = (items.size + 3 - 1) / 3
 
     LazyVerticalGrid(
         modifier = Modifier
@@ -39,10 +43,11 @@ fun ServicioGridMinimized(columnsQuantity: Int, items: List<ServicioItemData>) {
             )
             .border(width = 1.dp, color = MaterialTheme.colorScheme.outline, shape = shape)
             .clip(shape = shape)
+            .height(rowHeight * numberOfRows)
             .fillMaxWidth()
             .background(color = MaterialTheme.colorScheme.surface)
         ,
-        columns = GridCells.Fixed(columnsQuantity)
+        columns = GridCells.Fixed(3)
     ) {
         items(items) { item ->
             ServicioItemMinimized(
@@ -65,7 +70,6 @@ fun ServicioGridMinimizedPreview() {
 
     WaynimovilTheme {
         ServicioGridMinimized(
-            columnsQuantity = 3,
             items = items
         )
     }
@@ -85,7 +89,6 @@ fun ServicioGridMinimizedLongPreview() {
 
     WaynimovilTheme {
         ServicioGridMinimized(
-            columnsQuantity = 3,
             items = items
         )
     }
