@@ -65,7 +65,7 @@ fun CardOption(title: String, description: String? = null, onClick: () -> Unit) 
 
 @Preview
 @Composable
-fun TextBar(){
+fun CardOptionPreview(){
     WaynimovilTheme{
         CardOption(
             title = "Prueba TextBar",
