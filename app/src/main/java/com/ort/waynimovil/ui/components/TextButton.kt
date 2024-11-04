@@ -27,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,7 +35,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 
 @Composable
-fun TextButton(text: String, onClick: () -> Unit, textStyle: TextStyle = MaterialTheme.typography.bodyMedium) {
+fun TextButton(text: String, onClick: () -> Unit, textStyle: TextStyle = MaterialTheme.typography.bodyMedium, textColor: Color = MaterialTheme.colorScheme.secondary) {
     val scale = remember { Animatable(1f) }
     val coroutineScope = rememberCoroutineScope()
 
@@ -42,12 +43,7 @@ fun TextButton(text: String, onClick: () -> Unit, textStyle: TextStyle = Materia
         modifier = Modifier
             .scale(scale.value)
             .clip(MaterialTheme.shapes.medium)
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = rememberRipple(
-                    radius = 50.dp
-                )
-            ) {
+            .clickable {
                 coroutineScope.launch {
                     scale.animateTo(0.9f, animationSpec = tween(durationMillis = 100, easing = EaseInOut))
                     scale.animateTo(1f, animationSpec = tween(durationMillis = 200, easing = EaseInOut))

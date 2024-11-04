@@ -28,27 +28,27 @@ class MainActivityViewModel @Inject constructor(
     private val _creditCardTransactions = MutableStateFlow<List<Transaction>?>(null)
     val creditCardTransactions: StateFlow<List<Transaction>?> = _creditCardTransactions
 
-    fun loginUser(username: String, password: String) {
-        viewModelScope.launch {
-            try {
-                val response = fakeStoreRepository.loginUser(username, password)
-                _loginResponse.value = response
-            } catch (e: Exception) {
-                println("ERROR: $e")
-            }
-        }
-    }
-
-    fun getUserInfo(id: Int) {
-        viewModelScope.launch {
-            try {
-                val response = fakeStoreRepository.getUserInfo(id)
-                _userInfo.value = response
-            } catch (e: Exception) {
-                println("ERROR: $e")
-            }
-        }
-    }
+//    fun loginUser(username: String, password: String) {
+//        viewModelScope.launch {
+//            try {
+//                val response = fakeStoreRepository.loginUser(username, password)
+//                _loginResponse.value = response
+//            } catch (e: Exception) {
+//                println("ERROR: $e")
+//            }
+//        }
+//    }
+//
+//    fun getUserInfo(id: Int) {
+//        viewModelScope.launch {
+//            try {
+//                val response = fakeStoreRepository.getUserInfo(id)
+//                _userInfo.value = response
+//            } catch (e: Exception) {
+//                println("ERROR: $e")
+//            }
+//        }
+//    }
 
 
     fun getCreditCardTransactionsForUser(id: String) {
