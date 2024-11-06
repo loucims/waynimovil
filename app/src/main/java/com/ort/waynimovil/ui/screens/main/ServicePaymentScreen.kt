@@ -108,25 +108,27 @@ fun ServicePaymentScreen() {
                                 tint = MaterialTheme.colorScheme.onBackground
                             )
                         }
-                        Text(
-                            text = "Cargar Sube",
-                            style = MaterialTheme.typography.bodyLarge,
-                            color = MaterialTheme.colorScheme.onBackground
-                        )
-
-                        IconButton(onClick = {
-                            scope.launch {
-                                sheetState.hide()
-                                isSheetOpen = false
-                            }
-                        }) {
-                            Icon(
-                                imageVector = Icons.Default.Close,
-                                contentDescription = "Cerrar",
-                                tint = MaterialTheme.colorScheme.onBackground
-                            )
-                        }
                     }
+
+                    Text(
+                        text = "Cargar Sube",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+
+                    IconButton(onClick = {
+                        scope.launch {
+                            sheetState.hide()
+                            isSheetOpen = false
+                        }
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            contentDescription = "Cerrar",
+                            tint = MaterialTheme.colorScheme.onBackground
+                        )
+                    }
+
                 }
 
 
