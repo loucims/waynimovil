@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ort.waynimovil.ui.theme.Black
 
 @Composable
 fun ChatBubble(text: String, backgroundColor: Color = Color(0xFFDAE9FC)) {
@@ -23,7 +24,8 @@ fun ChatBubble(text: String, backgroundColor: Color = Color(0xFFDAE9FC)) {
     ) {
         Text(
             style = MaterialTheme.typography.headlineSmall,
-            text = text
+            text = text,
+            color = Black
         )
     }
 }

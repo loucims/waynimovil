@@ -71,7 +71,7 @@ fun ServicioItem(iconPainter: Painter, title: String, onClick: () -> Unit) {
                 color = MaterialTheme.colorScheme.outline,
                 shape = RoundedCornerShape(size = 8.dp)
             )
-            .background(color = Color(0xFFFFFFFF), shape = RoundedCornerShape(size = 8.dp))
+            .background(MaterialTheme.colorScheme.surface, shape = RoundedCornerShape(size = 8.dp))
             .padding(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 16.dp) // Adjusted padding
     ) {
         Box(

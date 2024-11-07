@@ -114,7 +114,7 @@ fun AccountScreen(viewModel: AccountViewModel = hiltViewModel()) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(color = MaterialTheme.colorScheme.onBackground)
+                        .background(color = MaterialTheme.colorScheme.secondaryContainer)
                         .padding(horizontal = 12.dp, vertical = 8.dp)
                 ) {
                     Text(
