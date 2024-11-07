@@ -45,8 +45,13 @@ fun AppNavigation() {
         MaterialTheme.colorScheme.primary
     else MaterialTheme.colorScheme.surface
 
-
     val userViewModel: UserViewModel = hiltViewModel()
+
+    fun logout() {
+        userViewModel.logout()
+        shouldRenderBottomBar = false
+        navController.navigate(Routes.LOGIN)
+    }
 
     Scaffold(
         bottomBar = {
@@ -89,8 +94,7 @@ fun AppNavigation() {
 
         if (shouldRenderMenu) {
             MenuDrawerScreen(
-                parentNavController = navController,
-                scope = scope,
+                onLogoutClick = { logout() },
                 drawerState = drawerState
             )
         }

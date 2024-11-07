@@ -17,7 +17,7 @@ import com.ort.waynimovil.ui.screens.UserViewModel
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
-fun MenuDrawerScreen(parentNavController: NavController, scope: CoroutineScope, drawerState: DrawerState) {
+fun MenuDrawerScreen(onLogoutClick: () -> Unit, drawerState: DrawerState) {
 
     CompositionLocalProvider(LocalLayoutDirection provides Rtl) {
         ModalNavigationDrawer(
@@ -26,7 +26,7 @@ fun MenuDrawerScreen(parentNavController: NavController, scope: CoroutineScope, 
             drawerContent = {
                 MenuDrawer(
                     drawerState = drawerState,
-                    parentNavController = parentNavController
+                    onLogoutClick = onLogoutClick
                 )
             },
             content = {}

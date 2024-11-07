@@ -24,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,9 +37,12 @@ import androidx.navigation.NavController
 import com.ort.waynimovil.R
 import com.ort.waynimovil.ThemeViewModel
 import com.ort.waynimovil.ui.screens.UserViewModel
+import kotlinx.coroutines.launch
 
 @Composable
-fun MenuDrawer(drawerState: DrawerState, parentNavController: NavController) {
+fun MenuDrawer(onLogoutClick: () -> Unit, drawerState: DrawerState) {
+    val scope = rememberCoroutineScope()
+
     val userViewModel: UserViewModel = hiltViewModel()
     val firstName by userViewModel.firstName.collectAsState()
     val lastName by userViewModel.lastName.collectAsState()
@@ -116,7 +120,12 @@ fun MenuDrawer(drawerState: DrawerState, parentNavController: NavController) {
                         ,
                         CardOptionData(
                             title = "Cerrar sesion",
-                            onClick = {}
+                            onClick = {
+                                scope.launch {
+                                    drawerState.close()
+                                    onLogoutClick()
+                                }
+                            }
                         )
                     )
                 )

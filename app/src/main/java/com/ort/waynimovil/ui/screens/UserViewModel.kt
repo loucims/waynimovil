@@ -59,4 +59,11 @@ class UserViewModel @Inject constructor(
     fun setLoginToken(token: String) {
         _loginToken.value = token
     }
+
+    fun logout() {
+        _loginToken.value = null
+        _firstName.value = null
+        _lastName.value = null
+        _userDataFetched.value = false
+    }
 }
