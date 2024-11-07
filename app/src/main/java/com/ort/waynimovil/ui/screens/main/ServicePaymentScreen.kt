@@ -42,8 +42,6 @@ fun ServicePaymentScreen() {
 
     var showSuccessMessage by remember { mutableStateOf(false) }
 
-    val subeImage: Painter = painterResource(id = R.drawable.logo_sube)
-
 
     val items = listOf(
         ServicioItemData(R.drawable.icono_colectivo, "CARGAR SUBE") {

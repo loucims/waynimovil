@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.LayoutDirection.Rtl
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -17,7 +18,7 @@ import com.ort.waynimovil.ui.screens.UserViewModel
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
-fun MenuDrawerScreen(onLogoutClick: () -> Unit, drawerState: DrawerState) {
+fun MenuDrawerScreen(onLogoutClick: () -> Unit, drawerState: DrawerState, content: @Composable () -> Unit) {
 
     CompositionLocalProvider(LocalLayoutDirection provides Rtl) {
         ModalNavigationDrawer(
@@ -29,7 +30,10 @@ fun MenuDrawerScreen(onLogoutClick: () -> Unit, drawerState: DrawerState) {
                     onLogoutClick = onLogoutClick
                 )
             },
-            content = {}
-        )
+        ) {
+            CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                content()
+            }
+        }
     }
 }

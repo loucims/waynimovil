@@ -38,6 +38,7 @@ import com.ort.waynimovil.R
 import com.ort.waynimovil.ThemeViewModel
 import com.ort.waynimovil.ui.screens.UserViewModel
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 @Composable
 fun MenuDrawer(onLogoutClick: () -> Unit, drawerState: DrawerState) {
@@ -87,11 +88,10 @@ fun MenuDrawer(onLogoutClick: () -> Unit, drawerState: DrawerState) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = "\uD83D\uDC4B Hola Mariana Belén",
+                    text = "\uD83D\uDC4B Hola ${firstName?.capitalize(Locale.ROOT)} ${lastName?.capitalize(Locale.ROOT)}",
                     style = MaterialTheme.typography.headlineSmall,
                     color = MaterialTheme.colorScheme.onBackground,
-
-                    )
+                )
 
                 Spacer(modifier = Modifier.height(24.dp))
 

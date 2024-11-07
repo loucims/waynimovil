@@ -16,6 +16,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ort.waynimovil.R
@@ -26,6 +27,7 @@ import com.ort.waynimovil.ui.components.LoanExpiringCard
 import com.ort.waynimovil.ui.components.ServicioGridMinimized
 import com.ort.waynimovil.ui.components.ServicioItemData
 import com.ort.waynimovil.ui.screens.UserViewModel
+import java.util.Locale
 
 @Composable
 fun HomeScreen(userViewModel: UserViewModel) {
@@ -58,7 +60,7 @@ fun HomeScreen(userViewModel: UserViewModel) {
                 .padding(start = 12.dp)
         ) {
             Text(
-                text = "👋 Hola $firstName",
+                text = "👋 Hola ${firstName?.capitalize(Locale.ROOT)}",
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onBackground
                 )

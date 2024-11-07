@@ -5,21 +5,27 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.LayoutDirection.Rtl
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.ort.waynimovil.ui.components.BottomNavigationBar
+import com.ort.waynimovil.ui.components.MenuDrawer
 import com.ort.waynimovil.ui.screens.login.LoginScreen
 import com.ort.waynimovil.ui.screens.SplashScreen
 import com.ort.waynimovil.ui.screens.UserViewModel
@@ -71,32 +77,35 @@ fun AppNavigation() {
         containerColor = scaffoldColor
     ) { padding ->
 
-        Box(
-            Modifier
-                .fillMaxSize()
-                .padding(padding)
+        MenuDrawerScreen(
+            onLogoutClick = { logout() },
+            drawerState = drawerState
         ) {
-            NavHost(
-                navController = navController,
-                startDestination = Routes.SPLASH,
-                modifier = Modifier.fillMaxSize()
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .padding(padding)
             ) {
-                composable(Routes.SPLASH) { SplashScreen(navController) }
-                composable(Routes.LOGIN) { LoginScreen(navController, userViewModel, {shouldRenderBottomBar = true}) }
-                composable(Routes.HOME) { HomeScreen(userViewModel) }
-                composable(Routes.ACCOUNT) { AccountScreen() }
-                composable(Routes.CARD) { CardScreen() }
-                composable(Routes.SERVICE_PAYMENT) { ServicePaymentScreen() }
+                NavHost(
+                    navController = navController,
+                    startDestination = Routes.SPLASH,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    composable(Routes.SPLASH) { SplashScreen(navController) }
+                    composable(Routes.LOGIN) {
+                        LoginScreen(
+                            navController,
+                            userViewModel,
+                            { shouldRenderBottomBar = true })
+                    }
+                    composable(Routes.HOME) { HomeScreen(userViewModel) }
+                    composable(Routes.ACCOUNT) { AccountScreen() }
+                    composable(Routes.CARD) { CardScreen() }
+                    composable(Routes.SERVICE_PAYMENT) { ServicePaymentScreen() }
+                }
             }
         }
-
-        val shouldRenderMenu = drawerState.isOpen || drawerState.isAnimationRunning
-
-        if (shouldRenderMenu) {
-            MenuDrawerScreen(
-                onLogoutClick = { logout() },
-                drawerState = drawerState
-            )
-        }
     }
+
 }
+
