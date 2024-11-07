@@ -68,7 +68,7 @@ fun ServicioItem(iconPainter: Painter, title: String, onClick: () -> Unit) {
             )
             .border(
                 width = 1.dp,
-                color = MaterialTheme.colorScheme.background,
+                color = MaterialTheme.colorScheme.outline,
                 shape = RoundedCornerShape(size = 8.dp)
             )
             .background(color = Color(0xFFFFFFFF), shape = RoundedCornerShape(size = 8.dp))
