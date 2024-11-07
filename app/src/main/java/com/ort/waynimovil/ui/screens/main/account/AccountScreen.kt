@@ -69,7 +69,7 @@ fun AccountScreen(viewModel: AccountViewModel = hiltViewModel()) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp, 16.dp, 16.dp, 0.dp),
+                        .padding(16.dp, 24.dp, 16.dp, 0.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {

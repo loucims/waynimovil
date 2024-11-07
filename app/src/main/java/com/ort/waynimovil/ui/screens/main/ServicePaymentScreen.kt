@@ -56,7 +56,8 @@ fun ServicePaymentScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp, 0.dp),
+            .background(MaterialTheme.colorScheme.background)
+            .padding(16.dp, 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Header(text = "Pago de servicios")
