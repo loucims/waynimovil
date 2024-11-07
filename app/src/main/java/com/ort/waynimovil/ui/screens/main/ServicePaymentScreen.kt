@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
@@ -55,17 +56,6 @@ fun ServicePaymentScreen() {
         ServicioItemData(R.drawable.icono_antena, "DIRECT TV PREPAGO", {}),
     )
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-            .padding(16.dp, 24.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Header(text = "Pago de servicios")
-        ServicioGrid(items = items, verticalSpacing = 16, horizontalSpacing = 16)
-    }
-
     LaunchedEffect(isSheetOpen) {
         //Ni YO, se por que esto funciona, pero funciona. arregla la animacion del principio
         if (isSheetOpen) {
@@ -76,6 +66,33 @@ fun ServicePaymentScreen() {
                 sheetState.show()
             }
         }
+    }
+
+    fun handleClose() {
+        scope.launch {
+            sheetState.hide()
+            isSheetOpen = false
+        }
+    }
+
+    fun handleNext() {
+        if (showSuccessMessage) {
+            showSuccessMessage = false
+            handleClose()
+        } else {
+            showSuccessMessage = true
+        }
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(16.dp, 24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Header(text = "Pago de servicios")
+        ServicioGrid(items = items, verticalSpacing = 16, horizontalSpacing = 16)
     }
 
     if (isSheetOpen) {
@@ -91,61 +108,71 @@ fun ServicePaymentScreen() {
                     .fillMaxWidth()
                     .fillMaxHeight()
             ) {
-                Row(
+                TopBar(
+                    shouldShowBackArrow = showSuccessMessage,
+                    headerText = "Cargar Sube",
+                    onBackArrowClick = { handleClose() },
+                    onXClick = { handleClose() }
+                )
+
+                Column(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .background(MaterialTheme.colorScheme.onSecondary),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
+                        .padding(start = 12.dp, end = 12.dp, bottom = 16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    if (!showSuccessMessage) {
-                        IconButton(onClick = {
-                            scope.launch {
-                                sheetState.hide()
-                                isSheetOpen = false
-                            }
-                        }) {
-                            Icon(
-                                imageVector = Icons.Default.ArrowBack,
-                                contentDescription = "Volver",
-                                tint = MaterialTheme.colorScheme.onBackground
-                            )
-                        }
+                    if (showSuccessMessage) {
+
+                        SuccesfulSube { handleNext() }
+                    } else {
+                        Spacer(modifier = Modifier.height(40.dp))
+                        SubeConfirmation { handleNext() }
                     }
-                    else{
-                        Box(){}
-                    }
-
-                    Text(
-                        text = "Cargar Sube",
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onBackground
-                    )
-
-                    IconButton(onClick = {
-                        scope.launch {
-                            sheetState.hide()
-                            isSheetOpen = false
-                        }
-                    }) {
-                        Icon(
-                            imageVector = Icons.Default.Close,
-                            contentDescription = "Cerrar",
-                            tint = MaterialTheme.colorScheme.onBackground
-                        )
-                    }
-
-                }
-
-
-                Spacer(modifier = Modifier.height(20.dp))
-
-                if (showSuccessMessage) {
-                    SuccesfulSube({})
-                } else {
-                    SubeConfirmation({})
                 }
             }
+        }
+    }
+}
+
+
+@Composable
+fun TopBar(shouldShowBackArrow: Boolean, headerText: String, onBackArrowClick: () -> Unit, onXClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .shadow(
+                elevation = 6.dp,
+                spotColor = Color(0x26000000),
+                ambientColor = Color(0x26000000)
+            )
+            .background(MaterialTheme.colorScheme.surface)
+            .padding(vertical = 10.dp, horizontal = 12.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        if (shouldShowBackArrow) {
+            IconButton(onClick = { onBackArrowClick() }) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Volver",
+                    tint = MaterialTheme.colorScheme.onBackground
+                )
+            }
+        } else {
+            Box(modifier = Modifier.width(48.dp)) // Para mantener el espacio
+        }
+        Text(
+            text = "Cargar Sube",
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+        IconButton(onClick = { onXClick() }) {
+            Icon(
+                imageVector = Icons.Default.Close,
+                contentDescription = "Cerrar",
+                tint = MaterialTheme.colorScheme.onBackground
+            )
         }
     }
 }
