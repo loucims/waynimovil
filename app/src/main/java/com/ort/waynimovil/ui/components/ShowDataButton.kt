@@ -20,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,22 +35,11 @@ fun ShowDataButton(isActive: Boolean, onClick: () -> Unit) {
     val coroutineScope = rememberCoroutineScope()
 
 
-    LaunchedEffect(isActive) {
-        scale.animateTo(
-            targetValue = if (isActive) 1f else 1f,
-            animationSpec = tween(durationMillis = 300)
-        )
-    }
-
     Row(
         modifier = Modifier
             .scale(scale.value)
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = rememberRipple(
-                    radius = 70.dp
-                )
-            ) {
+            .clip(MaterialTheme.shapes.medium)
+            .clickable {
                 coroutineScope.launch {
                     scale.animateTo(0.9f, animationSpec = tween(durationMillis = 100, easing = EaseInOut))
                     scale.animateTo(1f, animationSpec = tween(durationMillis = 200, easing = EaseInOut))

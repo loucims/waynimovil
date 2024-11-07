@@ -74,7 +74,7 @@ fun HomeScreen(userViewModel: UserViewModel) {
         Spacer(modifier = Modifier.height(24.dp))
         
         
-        BankCardWithVisibilityToggle(cardNumber = "4957 0704 07070 5824", expirationDate = "05/23")
+        BankCardWithVisibilityToggle(cardNumber = "4957 0704 0707 5824", expirationDate = "05/23")
 
         Spacer(modifier = Modifier.height(20.dp))
         
