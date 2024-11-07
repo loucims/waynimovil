@@ -24,8 +24,8 @@ fun CardOption(title: String, description: String? = null, onClick: () -> Unit) 
             .border(width = 0.5.dp, MaterialTheme.colorScheme.outline)
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.surface)
-            .padding(12.5.dp, 16.dp)
-            .clickable { onClick() },
+            .clickable { onClick() }
+            .padding(12.5.dp, 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(

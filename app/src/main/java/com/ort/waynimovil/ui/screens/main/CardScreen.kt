@@ -34,9 +34,6 @@ fun CardScreen() {
     ){
         
         Header(text = "Mi Tarjeta")
-
-        Spacer(modifier = Modifier.height(24.dp))
-
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -60,12 +57,11 @@ fun CardScreen() {
                 .background(MaterialTheme.colorScheme.background)
 
         ){
-
-            BankCardWithVisibilityToggle(cardNumber = "4957 0704 07070 5824", expirationDate = "05/23")
+            BankCardWithVisibilityToggle(cardNumber = "4957 0704 0707 5824", expirationDate = "05/23")
         }
 
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         HorizontalDivider(modifier = Modifier.background(MaterialTheme.colorScheme.outline))
 

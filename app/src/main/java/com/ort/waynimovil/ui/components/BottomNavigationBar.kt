@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -46,7 +47,8 @@ fun BottomNavigationBar(navController: NavController, drawerState: DrawerState, 
     val primaryColor = MaterialTheme.colorScheme.primary
 
     NavigationBar(
-        modifier = Modifier.background(MaterialTheme.colorScheme.surface),
+        containerColor = MaterialTheme.colorScheme.surface,
+        tonalElevation = 0.dp
     ) {
         items.forEachIndexed { index, item ->
             val isSelected = if (isDrawerOpen || isDrawerStateChanging) {
