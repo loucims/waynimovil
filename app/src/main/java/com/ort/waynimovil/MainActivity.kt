@@ -27,7 +27,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MyApp {
+            val themeViewModel: ThemeViewModel = hiltViewModel()
+
+            MyApp(themeViewModel) {
                 AppNavigation()
             }
         }
@@ -35,8 +37,10 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MyApp(content: @Composable () -> Unit) {
-    WaynimovilTheme {
+fun MyApp(themeViewModel: ThemeViewModel, content: @Composable () -> Unit) {
+    val isDarkMode by themeViewModel.isDarkTheme.collectAsState()
+
+    WaynimovilTheme(darkTheme = isDarkMode) {
         content()
     }
 }
