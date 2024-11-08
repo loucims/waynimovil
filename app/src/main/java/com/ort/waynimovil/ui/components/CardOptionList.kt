@@ -2,6 +2,7 @@ package com.ort.waynimovil.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.items
@@ -28,7 +29,7 @@ data class CardOptionData(
 fun CardOptionList(items: List<CardOptionData>) {
     val shape = RoundedCornerShape(size = 8.dp)
 
-    LazyColumn(
+    Column(
         modifier = Modifier
             .shadow(
                 elevation = 6.dp,
@@ -40,7 +41,7 @@ fun CardOptionList(items: List<CardOptionData>) {
             .fillMaxWidth()
             .background(color = MaterialTheme.colorScheme.surface)
     ) {
-        items(items) { item ->
+        for (item in items) {
             CardOption(
                 title = item.title,
                 description = item.description,
